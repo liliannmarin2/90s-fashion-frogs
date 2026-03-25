@@ -4,6 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>90s Inspo — Fashion Frogs</title>
+<!-- 
+✅✅✅ COMPLETE VERSION ✅✅✅
+This file contains:
+- Desktop folders (MY LOOKS, FILTER, TAMA) on left side
+- All 7 image URLs from WordPress
+- "get the look" button at bottom
+- Fruit button that changes colors
+- Mobile responsive layout
+- Screenshot feature
+-->
 <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -125,7 +135,7 @@ body {
 
 /* ── DESKTOP ICONS ── */
 .dicons{position:fixed;left:12px;top:46px;display:flex;flex-direction:column;gap:14px;z-index:100;}
-.di{display:flex;flex-direction:column;align-items:center;gap:3px;cursor:none;width:58px;transition:transform .15s;}
+.di{display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer;width:58px;transition:transform .15s;}
 .di:hover{transform:scale(1.12);}
 .di:hover .dilbl{background:var(--purple-d);color:#fff;}
 .folder{position:relative;width:42px;height:36px;}
@@ -167,6 +177,69 @@ body {
 .wb.c{background:#f09898;} .wb.m{background:#f8e070;}
 .wb:hover{filter:brightness(1.1);}
 
+/* GET THE LOOK button overlaid on image */
+.get-look-overlay-btn {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+  animation: floatBtn 3s ease-in-out infinite;
+}
+
+.get-look-overlay-btn:hover {
+  transform: translateX(-50%) scale(1.1) translateY(-5px);
+}
+
+.get-look-overlay-btn .star-btn {
+  width: 80px;
+  height: 76px;
+  filter: drop-shadow(0 4px 10px rgba(255,215,0,0.6));
+  transition: all 0.3s;
+}
+
+.get-look-overlay-btn:hover .star-btn {
+  filter: drop-shadow(0 6px 15px rgba(255,215,0,0.9));
+  animation: spinStar 0.5s ease;
+}
+
+@keyframes spinStar {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes floatBtn {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-8px);
+  }
+}
+
+.star-btn-text {
+  font-family: 'VT323', monospace;
+  font-size: 14px;
+  color: #FFD700;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-shadow: 
+    0 0 10px rgba(255,215,0,0.8),
+    0 2px 4px rgba(0,0,0,0.8),
+    0 0 20px rgba(255,215,0,0.4);
+  background: rgba(0,0,0,0.7);
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 2px solid #FFD700;
+}
+
 /* ── FILTER BAR ── */
 .fbar{display:flex;flex-wrap:wrap;gap:5px;padding:8px 10px;}
 .ftag{
@@ -192,7 +265,7 @@ body {
 
 .carousel-stage{
   position:relative;
-  height:520px;
+  height:420px;
   overflow:hidden;
   background:linear-gradient(135deg,#2a0840 0%,#1a0828 100%);
 }
@@ -223,6 +296,63 @@ body {
 }
 .slide-photo img{width:100%;height:100%;object-fit:contain;object-position:center top;display:block;transition:transform .6s ease;background:#1a0828;}
 .slide:hover .slide-photo img{transform:scale(1.02);}
+
+/* ══ GET THE LOOK GOLDEN STAR BUTTON OVERLAY ══ */
+.get-look-overlay-btn {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  z-index: 10;
+  transition: all 0.3s ease;
+  opacity: 0;
+  animation: fadeInStar 0.6s ease forwards 0.5s;
+}
+
+@keyframes fadeInStar {
+  from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.get-look-overlay-btn:hover {
+  transform: translateX(-50%) scale(1.15) rotate(5deg);
+  filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8));
+}
+
+.star-btn {
+  width: 80px;
+  height: 80px;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
+  animation: starPulse 2s ease-in-out infinite;
+}
+
+@keyframes starPulse {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5)); }
+  50% { transform: scale(1.05); filter: drop-shadow(0 0 20px rgba(255,215,0,0.8)); }
+}
+
+.star-btn-text {
+  font-family: 'VT323', monospace;
+  font-size: 16px;
+  font-weight: bold;
+  color: #FFD700;
+  text-shadow: 
+    0 0 10px rgba(255,215,0,0.8),
+    0 2px 4px rgba(0,0,0,0.8),
+    -1px -1px 0 #8B4513,
+    1px -1px 0 #8B4513,
+    -1px 1px 0 #8B4513,
+    1px 1px 0 #8B4513;
+  letter-spacing: 2px;
+  white-space: nowrap;
+}
+
 .slide-ph{
   width:100%;height:100%;
   background:linear-gradient(135deg,#2a0840,#1a0828);
@@ -300,6 +430,63 @@ body {
   transform:translateY(-2px);box-shadow:0 6px 0 rgba(140,20,100,0.4);
 }
 .get-look-btn:active{transform:translateY(1px);box-shadow:0 1px 0 rgba(140,20,100,0.4);}
+
+/* GET THE LOOK OVERLAY BUTTON ON IMAGE */
+.get-look-overlay-btn {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  z-index: 10;
+  animation: floatButton 3s ease-in-out infinite;
+}
+
+.get-look-overlay-btn:hover {
+  transform: translateX(-50%) scale(1.15);
+  animation: none;
+}
+
+.get-look-overlay-btn:hover .star-btn {
+  filter: drop-shadow(0 0 20px rgba(255,215,0,0.8)) drop-shadow(0 0 40px rgba(255,215,0,0.4));
+}
+
+.star-btn {
+  width: 80px;
+  height: 76px;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4)) drop-shadow(0 0 15px rgba(255,215,0,0.5));
+  transition: all 0.3s;
+}
+
+.star-btn-text {
+  font-family: 'VT323', monospace;
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-shadow: 
+    0 2px 4px rgba(0,0,0,0.8),
+    0 0 10px rgba(255,215,0,0.8);
+  background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(0,0,0,0.5));
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 2px solid rgba(255,215,0,0.6);
+}
+
+@keyframes floatButton {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+}
 
 /* ── ARROW ROW ── */
 .arrow-row{
@@ -435,6 +622,729 @@ body {
   pointer-events:none;
 }
 @keyframes toastpop{from{opacity:0;transform:translateX(-50%) scale(.8);}to{opacity:1;transform:translateX(-50%) scale(1);}}
+
+/* ══════════════════════════════════════
+   💾 SAVE THIS LOOK BUTTON - ALWAYS VISIBLE!
+══════════════════════════════════════ */
+.snap-btn {
+  position: fixed;
+  top: 42px;
+  right: 12px;
+  z-index: 99999;
+  background: linear-gradient(135deg, #00ff88, #00cc66);
+  border: 5px solid #fff;
+  box-shadow: 
+    0 0 0 3px #00ff88,
+    0 0 25px rgba(0,255,136,0.8),
+    0 0 50px rgba(0,255,136,0.4),
+    0 4px 12px rgba(0,0,0,0.4);
+  border-radius: 50%;
+  width: 110px;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  animation: neonGreenPulse 2s ease-in-out infinite;
+  pointer-events: all;
+}
+
+.snap-btn:hover {
+  transform: scale(1.15) rotate(-5deg);
+  box-shadow: 
+    0 0 0 3px #00ff88,
+    0 0 40px rgba(0,255,136,1),
+    0 0 80px rgba(0,255,136,0.6),
+    0 6px 16px rgba(0,0,0,0.5);
+  background: linear-gradient(135deg, #00ffaa, #00ee77);
+}
+
+.snap-btn:active {
+  transform: scale(1.08) rotate(-3deg);
+}
+
+@keyframes neonGreenPulse {
+  0%, 100% {
+    box-shadow: 
+      0 0 0 3px #00ff88,
+      0 0 25px rgba(0,255,136,0.8),
+      0 0 50px rgba(0,255,136,0.4),
+      0 4px 12px rgba(0,0,0,0.4);
+    filter: brightness(1);
+  }
+  50% {
+    box-shadow: 
+      0 0 0 3px #00ff88,
+      0 0 40px rgba(0,255,136,1),
+      0 0 80px rgba(0,255,136,0.6),
+      0 0 120px rgba(0,255,136,0.3),
+      0 4px 12px rgba(0,0,0,0.4);
+    filter: brightness(1.2);
+  }
+}
+
+.snap-btn-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+}
+
+.snap-text {
+  font-family: 'VT323', monospace;
+  font-size: 13px;
+  color: #003820;
+  font-weight: bold;
+  text-shadow: 
+    0 1px 3px rgba(255,255,255,0.9),
+    0 0 10px rgba(255,255,255,0.7);
+  letter-spacing: 1.5px;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* ── ARROW ROW ── */
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 
+    0 0 0 3px #00ff88,
+    0 0 15px rgba(0,255,136,0.5),
+    0 2px 8px rgba(0,0,0,0.3);
+}
+
+@keyframes neonPulse {
+  0%, 100% {
+    box-shadow: 
+      0 0 0 3px #00ff88,
+      0 0 20px rgba(0,255,136,0.6),
+      0 4px 12px rgba(0,0,0,0.4);
+  }
+  50% {
+    box-shadow: 
+      0 0 0 3px #00ff88,
+      0 0 35px rgba(0,255,136,0.9),
+      0 0 50px rgba(0,255,136,0.4),
+      0 4px 12px rgba(0,0,0,0.4);
+  }
+}
+
+/* Retro Download Icon (floppy disk style) */
+.pixel-download {
+  width: 24px;
+  height: 24px;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: 0;
+  image-rendering: pixelated;
+  flex-shrink: 0;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+.pixel-download span {
+  background: #003820;
+  display: block;
+}
+
+/* Lightning bolt sparkles */
+.snap-sparkle {
+  position: absolute;
+  font-size: 16px;
+  color: #ffff00;
+  text-shadow: 0 0 8px rgba(255,255,0,0.8);
+  animation: sparkleZap 1.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.snap-sparkle:nth-child(1) {
+  top: -10px;
+  left: -10px;
+  animation-delay: 0s;
+}
+
+.snap-sparkle:nth-child(2) {
+  top: -10px;
+  right: -10px;
+  animation-delay: 0.5s;
+}
+
+.snap-sparkle:nth-child(3) {
+  bottom: -10px;
+  right: 50%;
+  transform: translateX(50%);
+  animation-delay: 1s;
+}
+
+@keyframes sparkleZap {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(0.8) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.3) rotate(180deg);
+  }
+}
+
+.snap-text {
+  font-weight: bold;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+  white-space: nowrap;
+  letter-spacing: 2px;
+}
+
+/* Camera Flash Effect */
+.camera-flash {
+  position: fixed;
+  inset: 0;
+  background: white;
+  z-index: 99999;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.camera-flash.active {
+  animation: flash 0.5s ease-out;
+}
+
+@keyframes flash {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  30% { opacity: 0.8; }
+  100% { opacity: 0; }
+}
+
+/* Success Toast */
+.snap-toast {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: linear-gradient(135deg, var(--purple-d), #a020c0);
+  color: white;
+  font-size: 16px;
+  letter-spacing: 2px;
+  padding: 14px 24px;
+  border-radius: 8px;
+  z-index: 100000;
+  box-shadow: 0 0 0 2px rgba(255,180,255,0.5), 0 8px 20px rgba(0,0,0,0.4);
+  pointer-events: none;
+  opacity: 0;
+  font-family: 'VT323', monospace;
+}
+
+.snap-toast.active {
+  animation: snaptoast 2s ease-out;
+}
+
+@keyframes snaptoast {
+  0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+  15% { opacity: 1; transform: translate(-50%, -50%) scale(1.1); }
+  20% { transform: translate(-50%, -50%) scale(1); }
+  85% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+}
+
+/* ══════════════════════════════════════
+   🍎 FRUIT KDP BUTTON - PIXELATED!
+══════════════════════════════════════ */
+.fruit-btn {
+  position: fixed;
+  bottom: 52px;
+  right: 12px;
+  z-index: 99999;
+  background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+  border: 3px solid #fff;
+  box-shadow: 
+    0 0 0 3px #ff6b6b,
+    0 0 20px rgba(255,107,107,0.6),
+    0 4px 12px rgba(0,0,0,0.4);
+  border-radius: 20px;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.6s ease;
+  font-family: 'VT323', monospace;
+  font-size: 14px;
+  color: #fff;
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  animation: fruitBounce 3s ease-in-out infinite;
+  text-decoration: none;
+}
+
+.fruit-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  filter: brightness(1.15);
+}
+
+@keyframes fruitBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* 🦄 PINTEREST FURBY BUTTON */
+.pinterest-btn {
+  position: fixed;
+  bottom: 108px;
+  right: 12px;
+  z-index: 99999;
+  background: linear-gradient(135deg, #E60023, #bd081c);
+  border: 4px solid #fff;
+  box-shadow: 
+    0 0 0 4px #E60023,
+    0 0 20px rgba(230,0,35,0.6),
+    0 4px 12px rgba(0,0,0,0.4);
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-decoration: none;
+  animation: furbyWiggle 3s ease-in-out infinite;
+}
+
+.pinterest-btn:hover {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 
+    0 0 0 4px #E60023,
+    0 0 30px rgba(230,0,35,0.9),
+    0 6px 16px rgba(0,0,0,0.5);
+}
+
+@keyframes pinterestPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 4px #E60023, 0 0 20px rgba(230,0,35,0.6), 0 4px 12px rgba(0,0,0,0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 4px #E60023, 0 0 30px rgba(230,0,35,0.8), 0 4px 12px rgba(0,0,0,0.4);
+  }
+}
+
+/* ══════════════════════════════════════
+   📱 MOBILE RESPONSIVE STYLES
+══════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  /* Remove custom cursor on mobile */
+  body {
+    cursor: auto !important;
+    overflow-x: hidden;
+  }
+  
+  #cur {
+    display: none !important;
+  }
+  
+  /* Fix top nav for mobile */
+  .tnav {
+    gap: 10px;
+    padding: 0 8px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap;
+  }
+  
+  .tnav::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .tnav-logo {
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    flex-shrink: 0;
+  }
+  
+  .tnav a {
+    font-size: 11px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  
+  /* Save This Look 90s green circle mobile */
+  .snap-btn {
+    top: 38px;
+    right: 8px;
+    width: 90px;
+    height: 90px;
+  }
+
+  .snap-btn-content {
+    gap: 2px;
+  }
+
+  .snap-text {
+    font-size: 11px;
+    letter-spacing: 1.2px;
+  }
+
+  /* GET THE LOOK overlay button mobile */
+  .star-btn {
+    width: 60px;
+    height: 57px;
+  }
+
+  .star-btn-text {
+    font-size: 13px;
+    padding: 4px 12px;
+  }
+  
+  /* Fruit KDP button mobile */
+  .fruit-btn {
+    bottom: 52px;
+    right: 8px;
+    padding: 6px 12px;
+    font-size: 12px;
+    gap: 6px;
+  }
+
+  #fruit-emoji {
+    font-size: 20px !important;
+  }
+
+  /* Pinterest button mobile */
+  .pinterest-btn {
+    bottom: 118px;
+    right: 8px;
+    width: 50px;
+    height: 50px;
+  }
+
+  .pinterest-btn svg {
+    width: 26px;
+    height: 26px;
+  }
+  
+  /* Hide desktop folder icons */
+  .dicons {
+    display: none !important;
+  }
+  
+  /* Center and stack windows */
+  #desk {
+    padding: 42px 0 52px 0 !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    overflow-x: hidden;
+  }
+  
+  /* Make windows full-width and stack - NO CHOPPING */
+  .win {
+    position: relative !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 8px 0 !important;
+    border-radius: 0 !important;
+  }
+  
+  /* Filter window adjustments */
+  #filter-win {
+    order: 1;
+  }
+  
+  .fbar {
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 8px;
+  }
+  
+  .ftag {
+    font-size: 11px;
+    padding: 4px 8px;
+  }
+  
+  .ftag svg {
+    width: 10px;
+    height: 10px;
+  }
+  
+  /* Carousel adjustments - NO CHOPPING */
+  #carousel-win {
+    order: 2;
+  }
+  
+  .carousel-stage {
+    height: auto !important;
+    min-height: 500px;
+    max-height: 700px;
+  }
+  
+  .slide {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .slide-photo {
+    width: 100% !important;
+    height: 300px;
+    border-right: none;
+    border-bottom: 2px solid rgba(200,80,255,0.3);
+  }
+  
+  .slide-photo img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .slide-info {
+    padding: 12px;
+    width: 100%;
+    max-height: none;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .slide-name {
+    font-size: 18px;
+  }
+  
+  .slide-cat {
+    font-size: 9px;
+  }
+  
+  .vibe-label {
+    font-size: 10px;
+  }
+  
+  .get-look-btn {
+    font-size: 17px;
+    padding: 11px 0;
+  }
+  
+  .mood-row {
+    gap: 4px;
+  }
+  
+  .mood-btn {
+    font-size: 16px;
+    padding: 6px 0;
+  }
+  
+  .cher-row {
+    padding: 6px 8px;
+  }
+  
+  .cher-face {
+    font-size: 18px;
+  }
+  
+  .cher-quote {
+    font-size: 11px;
+  }
+  
+  .pair-tag {
+    font-size: 10px;
+    padding: 2px 8px;
+  }
+  
+  .song-chip {
+    padding: 6px 8px;
+    gap: 8px;
+  }
+  
+  .song-disc {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .song-txt {
+    font-size: 13px;
+  }
+  
+  .song-lbl {
+    font-size: 8px;
+  }
+  
+  /* Arrow controls */
+  .arrow-row {
+    gap: 10px;
+    padding: 8px 0;
+  }
+  
+  .arr {
+    width: 44px;
+    height: 36px;
+  }
+  
+  .arr::before {
+    font-size: 16px;
+  }
+  
+  .dot {
+    width: 8px;
+    height: 8px;
+  }
+  
+  .dots {
+    gap: 5px;
+  }
+  
+  .look-badge {
+    font-size: 11px;
+    padding: 2px 6px;
+  }
+  
+  /* Tamagotchi adjustments */
+  #tama-win {
+    order: 3;
+  }
+  
+  /* Taskbar mobile adjustments */
+  .tbar {
+    gap: 5px;
+    padding: 0 6px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .tbar::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .t-start {
+    font-size: 13px;
+    padding: 3px 8px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  
+  .titem {
+    font-size: 11px;
+    padding: 3px 6px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  
+  .tclk {
+    font-size: 12px;
+    padding: 3px 6px;
+  }
+  
+  /* Start menu mobile */
+  .smenu {
+    width: 170px;
+    left: 6px;
+  }
+  
+  .smhead {
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+  
+  .smrow {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+  
+  /* Touch-friendly sizing */
+  .wb {
+    width: 18px;
+    height: 18px;
+    font-size: 10px;
+  }
+  
+  .wbar {
+    height: 28px;
+  }
+  
+  .wtitle {
+    font-size: 12px;
+  }
+}
+
+/* Very small phones - FIX CHOPPING */
+@media (max-width: 380px) {
+  .tnav {
+    padding: 0 6px;
+    gap: 8px;
+  }
+  
+  .tnav-logo {
+    font-size: 13px;
+  }
+  
+  .tnav a {
+    font-size: 10px;
+  }
+  
+  .snap-btn {
+    width: 75px;
+    height: 75px;
+    top: 36px;
+    right: 6px;
+  }
+
+  .snap-text {
+    font-size: 10px;
+    letter-spacing: 1px;
+  }
+
+  .star-btn {
+    width: 50px;
+    height: 47px;
+  }
+
+  .star-btn-text {
+    font-size: 11px;
+    padding: 3px 10px;
+  }
+  
+  .fruit-btn {
+    padding: 5px 10px;
+    font-size: 11px;
+  }
+
+  .pinterest-btn {
+    bottom: 108px;
+    right: 6px;
+    width: 45px;
+    height: 45px;
+  }
+
+  .pinterest-btn svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  #fruit-emoji {
+    font-size: 18px !important;
+  }
+  
+  .slide-name {
+    font-size: 16px;
+  }
+  
+  .slide-photo {
+    height: 240px;
+  }
+  
+  .get-look-btn {
+    font-size: 15px;
+    padding: 10px 0;
+  }
+  
+  .win {
+    margin: 6px 0 !important;
+  }
+}
 </style>
 </head>
 <body>
@@ -455,10 +1365,6 @@ body {
 <div class="tnav">
   <span class="tnav-logo">✦ Fashion Frogs</span>
   <a href="https://fashionfrogs.com/">home</a>
-  <a href="https://fashionfrogs.com/outfits/">outfits</a>
-  <a href="#" class="on">90s inspo</a>
-  <a href="https://fashionfrogs.com/outfits/nyc-edit/">nyc edit</a>
-  <a href="https://fashionfrogs.com/shop/">shop</a>
 </div>
 
 <!-- DESKTOP -->
@@ -517,9 +1423,9 @@ body {
     </div>
   </div>
 
-  <!-- ══ CAROUSEL WINDOW — DOMINANT MAIN ══ -->
+  <!-- ══ CAROUSEL WINDOW — COMPACT SIZE ══ -->
   <div class="win carousel-win" id="carousel-win"
-       style="width:calc(100% - 110px);max-width:780px;left:90px;top:136px;z-index:180;">
+       style="width:680px;max-width:calc(100% - 110px);left:90px;top:80px;z-index:180;">
     <div class="wbar" data-win="carousel-win">
       <span class="wtitle" id="carousel-title">✦ look_001 — cruising rodeo drive</span>
       <div class="wbtns">
@@ -537,9 +1443,9 @@ body {
     </div>
   </div>
 
-  <!-- ══ TAMAGOTCHI — SMALL, RIGHT, STARTS MINIMIZED ══ -->
+  <!-- ══ TAMAGOTCHI — COMPACT SIZE ══ -->
   <div class="win tama-win-small" id="tama-win"
-       style="width:230px;right:16px;top:54px;z-index:200;display:none;">
+       style="width:220px;right:16px;top:54px;z-index:200;display:none!important;">
     <div class="wbar" data-win="tama-win">
       <span class="wtitle">✦ tamagotchi — <span id="t-name-txt">kiki</span></span>
       <div class="wbtns">
@@ -565,15 +1471,30 @@ body {
 
       <!-- shell -->
       <div style="position:relative;width:160px;margin:0 auto 6px;">
-        <svg viewBox="0 0 200 230" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;">
-          <ellipse cx="100" cy="115" rx="96" ry="108" fill="#f090b8" stroke="#c03070" stroke-width="3"/>
-          <ellipse cx="100" cy="115" rx="89" ry="101" fill="#f8b8d0"/>
-          <rect x="26" y="42" width="148" height="98" rx="10" fill="#c03070"/>
+        <svg id="tama-shell" viewBox="0 0 200 230" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;">
+          <defs>
+            <linearGradient id="shellGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#f090b8;stop-opacity:1">
+                <animate attributeName="stop-color" values="#f090b8;#b890e8;#90e8f0;#e890b8;#f090b8" dur="8s" repeatCount="indefinite"/>
+              </stop>
+              <stop offset="100%" style="stop-color:#f8b8d0;stop-opacity:1">
+                <animate attributeName="stop-color" values="#f8b8d0;#e8d0f8;#d0f8e8;#f8d0e8;#f8b8d0" dur="8s" repeatCount="indefinite"/>
+              </stop>
+            </linearGradient>
+            <linearGradient id="shellStroke" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" style="stop-color:#c03070;stop-opacity:1">
+                <animate attributeName="stop-color" values="#c03070;#7040b0;#40b0c0;#b040a0;#c03070" dur="8s" repeatCount="indefinite"/>
+              </stop>
+            </linearGradient>
+          </defs>
+          <ellipse cx="100" cy="115" rx="96" ry="108" fill="url(#shellGrad)" stroke="url(#shellStroke)" stroke-width="3"/>
+          <ellipse cx="100" cy="115" rx="89" ry="101" fill="url(#shellGrad)" opacity="0.7"/>
+          <rect x="26" y="42" width="148" height="98" rx="10" fill="url(#shellStroke)"/>
           <rect x="30" y="46" width="140" height="90" rx="8" fill="#c8ddb0"/>
-          <rect x="87" y="5" width="26" height="14" rx="7" fill="#801040"/>
-          <rect x="93" y="2" width="14" height="10" rx="5" fill="#c03070"/>
-          <rect x="24" y="150" width="152" height="5" rx="2" fill="#e070a0"/>
-          <circle cx="100" cy="222" r="7" fill="none" stroke="#c03070" stroke-width="2.5"/>
+          <rect x="87" y="5" width="26" height="14" rx="7" fill="url(#shellStroke)"/>
+          <rect x="93" y="2" width="14" height="10" rx="5" fill="url(#shellGrad)"/>
+          <rect x="24" y="150" width="152" height="5" rx="2" fill="url(#shellGrad)"/>
+          <circle cx="100" cy="222" r="7" fill="none" stroke="url(#shellStroke)" stroke-width="2.5"/>
         </svg>
 
         <div style="position:absolute;top:20%;left:15%;width:70%;height:39%;background:#c8ddb0;border-radius:4px;overflow:hidden;">
@@ -643,9 +1564,17 @@ body {
   <div class="smrow" onclick="location='https://fashionfrogs.com/shop/'">&#128717; shop</div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <script>
 /* ╔══════════════════════════════════════════════════════════════╗
    ║  ✏️  YOUR LOOKS — EDIT THIS SECTION ONLY                    ║
+   ║                                                              ║
+   ║  ⚠️  IF IMAGES AREN'T SHOWING:                              ║
+   ║  1. Open browser console (F12)                               ║
+   ║  2. Check for image loading errors                           ║
+   ║  3. Verify URLs are accessible in a new tab                  ║
+   ║  4. Check CORS settings on your WordPress                    ║
+   ║                                                              ║
    ║  For each look:                                              ║
    ║  • img  → paste your WordPress media URL here               ║
    ║  • name → the outfit title shown on the card                ║
@@ -655,14 +1584,14 @@ body {
    ║  • star → true = shows editor's pick star                   ║
    ╚══════════════════════════════════════════════════════════════╝ */
 const allLooks = [
-/*  id      name                     category     img ← PASTE URL HERE                 affiliate link             star  */
-  { id:'001', name:'Morning Coffee Run',   cat:'grunge',   img:'https://fashionfrogs.com/wp-content/uploads/2026/03/ChatGPT-Image-Mar-4-2026-03_08_42-PM.jpg',  link:'https://amzn.to/3NjXu9K',  star:true  },
-  { id:'002', name:'First Day of School', cat:'casual',   img:'https://fashionfrogs.com/wp-content/uploads/2026/03/ChatGPT-Image-Mar-16-2026-11_56_01-PM.jpg',  link:'https://amzn.to/4c2VP1y',  star:false },
-  { id:'003', name:'Bel Air Poolside',  cat:'richgirl', img:'https://fashionfrogs.com/wp-content/uploads/2026/03/ChatGPT-Image-Mar-23-2026-09_30_32-AM.jpg',  link:'https://amzn.to/4bNMutf',  star:false },
-  { id:'004', name:'Going Out Friday',     cat:'richgirl', img:'https://fashionfrogs.com/wp-content/uploads/2026/03/ChatGPT-Image-Mar-23-2026-10_21_10-AM.jpg',  link:'https://amzn.to/3Pk0Hqt',  star:false },
-  { id:'005', name:'Manicure and Pedicure Day',     cat:'casual',   img:'https://fashionfrogs.com/wp-content/uploads/2026/03/ChatGPT-Image-Mar-23-2026-10_37_29-AM.jpg',  link:'https://amzn.to/3PWR94E',  star:false },
-  { id:'006', name:'Golf Day',          cat:'sporty',   img:'https://fashionfrogs.com/wp-content/uploads/2026/03/ChatGPT-Image-Mar-23-2026-09_25_11-AM.jpg',  link:'https://amzn.to/4sxUK7Z',  star:false },
-  { id:'007', name:'Preppy Campus',        cat:'preppy',   img:'https://fashionfrogs.com/wp-content/uploads/2026/03/ChatGPT-Image-Mar-23-2026-09_31_40-AM.jpg',  link:'https://amzn.to/4bDUhty',  star:false },
+/*  id      name                     category     img ← PASTE YOUR IMAGE URL HERE                 affiliate link             star  */
+  { id:'001', name:'Morning Coffee Run',   cat:'grunge',   img:'',  link:'https://amzn.to/3NjXu9K',  star:true  },
+  { id:'002', name:'First Day of School', cat:'casual',   img:'',  link:'https://amzn.to/4c2VP1y',  star:false },
+  { id:'003', name:'Bel Air Poolside',  cat:'richgirl', img:'',  link:'https://amzn.to/4bNMutf',  star:false },
+  { id:'004', name:'Going Out Friday',     cat:'richgirl', img:'',  link:'https://amzn.to/3Pk0Hqt',  star:false },
+  { id:'005', name:'Manicure and Pedicure Day',     cat:'casual',   img:'',  link:'https://amzn.to/3PWR94E',  star:false },
+  { id:'006', name:'Golf Day',          cat:'sporty',   img:'',  link:'https://amzn.to/4sxUK7Z',  star:false },
+  { id:'007', name:'Preppy Campus',        cat:'preppy',   img:'',  link:'https://amzn.to/4bDUhty',  star:false },
 
 
 ];
@@ -937,7 +1866,9 @@ function newHoroscope(lid, cat){
 function buildSlides(){
   const stage=document.getElementById('carousel-stage');
   stage.innerHTML='';
+  console.log('🖼️ Building slides with', filtered.length, 'looks');
   filtered.forEach((look,i)=>{
+    console.log(`Look ${i+1}:`, look.name, 'Image URL:', look.img);
     const slide=document.createElement('div');
     slide.className='slide'+(i===0?' active':'');
     slide.id='slide-'+i;
@@ -949,12 +1880,31 @@ function buildSlides(){
     slide.innerHTML=`
       <div class="slide-photo">
         ${look.img
-          ?`<img src="${look.img}" alt="${look.name}">`
+          ?`<img src="${look.img}" alt="${look.name}" crossorigin="anonymous" 
+                 onload="console.log('✅ Image loaded:', '${look.name}')" 
+                 onerror="console.error('❌ Image failed:', '${look.name}', '${look.img}'); this.style.display='none'; this.nextElementSibling.style.display='flex';">
+             <div class="slide-ph" style="display:none;"><div class="slide-ph-inner"><div class="slide-ph-box"></div><div class="slide-ph-lbl">Image failed to load<br><small style="font-size:9px;">Check console (F12)</small></div></div></div>`
           :`<div class="slide-ph"><div class="slide-ph-inner"><div class="slide-ph-box"></div><div class="slide-ph-lbl">look_${look.id}</div></div></div>`}
         <div class="slide-corner tl"></div><div class="slide-corner tr"></div>
         <div class="slide-corner bl"></div><div class="slide-corner br"></div>
         <div class="slide-num">look_${look.id}</div>
         ${look.star?'<div class="slide-star">✦</div>':''}
+        
+        <!-- GET THE LOOK BUTTON ON IMAGE -->
+        <a class="get-look-overlay-btn" href="${look.link}" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 100 95" class="star-btn">
+            <defs>
+              <linearGradient id="goldGrad-${i}" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#FFD700"/>
+                <stop offset="50%" style="stop-color:#FFA500"/>
+                <stop offset="100%" style="stop-color:#FF8C00"/>
+              </linearGradient>
+            </defs>
+            <path d="M50 5 L61 38 L95 38 L68 58 L79 91 L50 71 L21 91 L32 58 L5 38 L39 38 Z" 
+                  fill="url(#goldGrad-${i})" stroke="#DAA520" stroke-width="2"/>
+          </svg>
+          <span class="star-btn-text">GET THE LOOK</span>
+        </a>
       </div>
       <div class="slide-info">
 
@@ -971,40 +1921,11 @@ function buildSlides(){
           <div id="star-lbl-${i}" style="font-size:13px;color:var(--purple-d);letter-spacing:1px;min-height:16px;margin-top:2px;opacity:0;transition:opacity .3s;font-family:'VT323',monospace;"></div>
         </div>
 
-        <!-- 💜 YES / NO POLL -->
-        <div style="background:rgba(200,80,255,0.06);border:1.5px solid rgba(200,80,255,0.18);border-radius:10px;padding:6px 10px;margin-bottom:5px;">
-          <div style="font-size:9px;color:var(--tm);letter-spacing:3px;margin-bottom:5px;">WOULD YOU WEAR THIS?</div>
-          <div style="display:flex;gap:6px;margin-bottom:5px;">
-            <div id="yes-btn-${i}" onclick="voteYesNo('${i}','yes')"
-              style="flex:1;padding:5px 0;background:linear-gradient(135deg,#c090f8,#9060d8);border:none;border-radius:20px;font-family:'VT323',monospace;font-size:14px;color:white;text-align:center;cursor:none;box-shadow:0 2px 0 #6040a0;letter-spacing:1px;">
-              ✦ yes queen
-            </div>
-            <div id="no-btn-${i}" onclick="voteYesNo('${i}','no')"
-              style="flex:1;padding:5px 0;background:linear-gradient(135deg,#a0c8f8,#6090d8);border:none;border-radius:20px;font-family:'VT323',monospace;font-size:14px;color:white;text-align:center;cursor:none;box-shadow:0 2px 0 #4060a0;letter-spacing:1px;">
-              not today
-            </div>
-          </div>
-          <div style="display:flex;gap:5px;align-items:center;margin-bottom:2px;">
-            <div style="font-size:9px;color:var(--purple-d);width:26px;" id="yes-pct-${i}">—</div>
-            <div style="flex:1;height:4px;background:rgba(200,80,255,0.12);border-radius:3px;overflow:hidden;">
-              <div id="yes-bar-${i}" style="height:100%;background:linear-gradient(90deg,#c090f8,#9060d8);border-radius:3px;width:0%;transition:width .5s;"></div>
-            </div>
-            <div style="font-size:9px;color:var(--tm);width:16px;text-align:right;" id="yes-ct-${i}">0</div>
-          </div>
-          <div style="display:flex;gap:5px;align-items:center;">
-            <div style="font-size:9px;color:#6090d8;width:26px;" id="no-pct-${i}">—</div>
-            <div style="flex:1;height:4px;background:rgba(200,80,255,0.12);border-radius:3px;overflow:hidden;">
-              <div id="no-bar-${i}" style="height:100%;background:linear-gradient(90deg,#a0c8f8,#6090d8);border-radius:3px;width:0%;transition:width .5s;"></div>
-            </div>
-            <div style="font-size:9px;color:var(--tm);width:16px;text-align:right;" id="no-ct-${i}">0</div>
-          </div>
-        </div>
-
-        <!-- 🎵 NOW PLAYING -->
+        <!-- 🎵 VIBE SUGGESTION -->
         <div class="song-chip" style="margin-bottom:5px;">
           <div class="song-disc"></div>
           <div style="flex:1;min-width:0;">
-            <div class="song-lbl" style="letter-spacing:3px;margin-bottom:2px;">NOW PLAYING</div>
+            <div class="song-lbl" style="letter-spacing:3px;margin-bottom:2px;">✨ VIBE SUGGESTION</div>
             <div class="song-txt" style="font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${song.title}</div>
             <div style="font-size:11px;color:var(--tm);font-family:'VT323',monospace;letter-spacing:1px;">${song.artist}</div>
           </div>
@@ -1019,7 +1940,6 @@ function buildSlides(){
           <div id="horo-${i}" style="font-size:12px;color:var(--td);font-family:'VT323',monospace;letter-spacing:.5px;line-height:1.35;transition:opacity .2s;">"${horo}"</div>
         </div>
 
-        <a class="get-look-btn" href="${look.link}" target="_blank" rel="noopener noreferrer">&#10022; get the look &#10022;</a>
       </div>`;
     stage.appendChild(slide);
   });
@@ -1104,6 +2024,64 @@ stageEl.addEventListener('touchend',e=>{
 });
 
 buildSlides();
+
+/* ════ SCREENSHOT FEATURE ════ */
+async function takeSnapshot() {
+  const activeSlide = document.querySelector('.slide.active');
+  if (!activeSlide) {
+    showSnapToast('❌ Open a look first!');
+    return;
+  }
+  
+  const imgElement = activeSlide.querySelector('.slide-photo img');
+  if (!imgElement || !imgElement.src) {
+    showSnapToast('❌ No image found!');
+    return;
+  }
+
+  // Camera flash effect
+  const flash = document.getElementById('camera-flash');
+  flash.classList.add('active');
+  setTimeout(() => flash.classList.remove('active'), 500);
+
+  try {
+    // Use html2canvas to capture the active slide
+    const canvas = await html2canvas(activeSlide, {
+      backgroundColor: '#1a0828',
+      scale: 2,
+      logging: false,
+      useCORS: true,
+      allowTaint: true
+    });
+
+    // Convert to blob and download
+    canvas.toBlob((blob) => {
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `fashion-frogs-look-${Date.now()}.png`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+      
+      showSnapToast('✨ Saved! Check downloads');
+    }, 'image/png');
+
+  } catch (error) {
+    console.error('Screenshot failed:', error);
+    showSnapToast('❌ Screenshot failed - try again!');
+  }
+}
+
+function showSnapToast(message) {
+  const toast = document.getElementById('snap-toast');
+  toast.textContent = message;
+  toast.classList.add('active');
+  setTimeout(() => {
+    toast.classList.remove('active');
+  }, 2000);
+}
 
 /* ════ TAMAGOTCHI ════ */
 const tCanvas=document.getElementById('tama-screen');
@@ -1271,7 +2249,7 @@ document.querySelectorAll('.win').forEach(w=>w.addEventListener('mousedown',()=>
 
 function closeWin(id){const w=document.getElementById(id);if(w)w.style.display='none';}
 function minWin(id){closeWin(id);}
-function openWin(id){const w=document.getElementById(id);if(!w)return;w.style.display='block';bringFront(w);}
+function openWin(id){const w=document.getElementById(id);if(!w)return;w.style.display='block';w.style.removeProperty('display');bringFront(w);}
 
 /* ════ START MENU ════ */
 function toggleStart(){document.getElementById('smenu').classList.toggle('open');}
@@ -1285,5 +2263,82 @@ window.addEventListener('load',()=>{
   setTimeout(()=>{t.style.transition='opacity .5s';t.style.opacity='0';setTimeout(()=>t.remove(),500);},2200);
 });
 </script>
+
+<!-- 💾 SAVE THIS LOOK - 90s GREEN NEON CIRCLE -->
+<button class="snap-btn" onclick="takeSnapshot()" title="Save this look! 💾">
+  <div class="snap-btn-content">
+    <div style="font-size: 22px; line-height: 1; margin-bottom: 2px;">💾</div>
+    <span class="snap-text">SAVE<br>THIS<br>LOOK</span>
+  </div>
+</button>
+
+<!-- 🍎 FRUIT KDP BUTTON - Changes color to match fruit! -->
+<a href="https://www.amazon.com/dp/B0GL1N9SJL" target="_blank" rel="noopener noreferrer" class="fruit-btn" id="fruit-btn" title="Color delicious fruits! 🍎">
+  <!-- Cycling Fruit Emoji -->
+  <div id="fruit-emoji" style="font-size: 24px; line-height: 1;">🍎</div>
+  
+  <span style="font-weight: bold; text-shadow: 0 2px 6px rgba(0,0,0,0.4);">COLOR FRUITS!</span>
+</a>
+
+<script>
+// Cycle through fruit emojis with matching colors and specific Amazon links
+const fruitData = [
+  { emoji: '🍎', color: '#ff6b6b', border: '#ff4444', link: 'https://www.amazon.com/dp/B0GFWFM3LB' }, // Apple
+  { emoji: '🍊', color: '#ff8c42', border: '#ff6600', link: 'https://www.amazon.com/dp/B0GL16HTKG' }, // Orange
+  { emoji: '🍋', color: '#ffd93d', border: '#ffbb00', link: 'https://www.amazon.com/dp/B0GL1N9SJL' }, // Lemon
+  { emoji: '🍌', color: '#ffe135', border: '#ffcc00', link: 'https://www.amazon.com/dp/B0GMC4HCP1' }, // Banana
+  { emoji: '🍉', color: '#ff6b9d', border: '#ff1744', link: 'https://www.amazon.com/dp/B0GMCDV52B' }, // Watermelon
+  { emoji: '🍇', color: '#9b59b6', border: '#7d3c98', link: 'https://www.amazon.com/dp/B0GNHJ69W5' }, // Grape
+  { emoji: '🫐', color: '#5f27cd', border: '#341f97', link: 'https://www.amazon.com/dp/B0GL17J3KQ' }, // Blueberry
+  { emoji: '🍑', color: '#ffa07a', border: '#ff8c66', link: 'https://www.amazon.com/dp/B0GNHVQV4W' }, // Peach
+  { emoji: '🍐', color: '#b8e986', border: '#88cc44', link: 'https://kdp.amazon.com/en_US/bookshelf?ref_=kdp_kdp_TAC_TN_bs' }, // Pear
+  { emoji: '🍓', color: '#ff4757', border: '#ee1e3e', link: 'https://www.amazon.com/dp/B0GL1N9SJL' }, // Strawberry (placeholder - you'll add later)
+  { emoji: '🍍', color: '#f39c12', border: '#d68910', link: 'https://www.amazon.com/dp/B0GL1N9SJL' }, // Pineapple (placeholder)
+  { emoji: '🥭', color: '#fdcb6e', border: '#f0932b', link: 'https://www.amazon.com/dp/B0GL1N9SJL' }, // Mango (placeholder)
+  { emoji: '🥥', color: '#d4a574', border: '#b08968', link: 'https://www.amazon.com/dp/B0GL1N9SJL' }  // Coconut (placeholder)
+];
+
+let fruitIndex = 0;
+
+function updateFruit() {
+  const fruit = fruitData[fruitIndex];
+  const emojiEl = document.getElementById('fruit-emoji');
+  const btnEl = document.getElementById('fruit-btn');
+  
+  if (emojiEl) emojiEl.textContent = fruit.emoji;
+  
+  if (btnEl) {
+    btnEl.href = fruit.link; // Update the link!
+    btnEl.style.background = `linear-gradient(135deg, ${fruit.color}, ${fruit.border})`;
+    btnEl.style.boxShadow = `
+      0 0 0 3px ${fruit.color},
+      0 0 20px ${fruit.color}99,
+      0 4px 12px rgba(0,0,0,0.4)
+    `;
+  }
+  
+  fruitIndex = (fruitIndex + 1) % fruitData.length;
+}
+
+// Initial update
+updateFruit();
+
+// Update every 3 seconds
+setInterval(updateFruit, 3000);
+</script>
+
+<!-- 📌 PINTEREST BUTTON -->
+<a href="https://www.pinterest.com/TheFashionfrogs/" target="_blank" rel="noopener noreferrer" class="pinterest-btn" title="Follow us on Pinterest!">
+  <svg viewBox="0 0 24 24" fill="white" style="width:30px;height:30px;">
+    <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.401.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.354-.629-2.758-1.379l-.749 2.848c-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.607 0 11.985-5.365 11.985-11.987C23.97 5.39 18.592.026 11.985.026L12.017 0z"/>
+  </svg>
+</a>
+
+<!-- Camera Flash Effect -->
+<div class="camera-flash" id="camera-flash"></div>
+
+<!-- Success Toast -->
+<div class="snap-toast" id="snap-toast"></div>
+
 </body>
 </html>
